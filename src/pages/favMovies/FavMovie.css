@@ -1,0 +1,47 @@
+.favMovieImg_container img {
+  width: 120px;
+  height: 200px;
+}
+.favMovie_container {
+  display: grid;
+}
+.favMovieTitle_container {
+  display: grid;
+}
+.deleteBtn_container {
+  display: flex;
+
+  justify-self: center;
+
+  align-items: center;
+}
+.deleteBtn_container:hover {
+  text-decoration: underline;
+
+  color: red;
+
+  cursor: pointer;
+}
+.pagination_container {
+  display: grid;
+}
+
+@media (min-width: 320px) {
+  .pagination_container {
+    grid-template-columns: 1fr 1fr 1fr;
+
+    margin: auto;
+
+    padding: 15px;
+  }
+  .favMovie_container {
+    grid-template-columns: 1fr 1fr 1fr;
+
+    margin: auto;
+  }
+  .favMovieTitle_container {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+}

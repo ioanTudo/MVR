@@ -1,0 +1,71 @@
+.movieInfo_container {
+  display: grid;
+
+  justify-self: center;
+
+  gap: 15px;
+}
+.img_container img {
+  width: 100%;
+}
+.comment_container {
+  display: grid;
+}
+.movie_wrapper {
+  padding: 15px;
+}
+.commentGrid_container {
+  display: grid;
+}
+.commentDisplay_container {
+  overflow: scroll;
+}
+.btns_container button {
+  cursor: pointer;
+}
+.ratingAndComm_container {
+  display: grid;
+}
+.buttonAndRating_container {
+  display: grid;
+}
+@media (min-width: 320px) {
+  .movieInfo_container {
+    grid-template-columns: 1fr 1fr;
+  }
+  .comment_container {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  .comment_container button {
+    width: 50%;
+
+    padding: 10px;
+  }
+  .comment_container textarea {
+    padding: 20px;
+  }
+  .commentDisplay_container {
+    border: 1px solid black;
+
+    width: 100%;
+    height: 300px;
+  }
+  .commentGrid_container {
+    grid-template-columns: 1fr;
+
+    gap: 50px;
+  }
+  .profileComment {
+    padding: 10px;
+
+    border: 1px solid black;
+    border-radius: 10px;
+  }
+  .buttonAndRating_container {
+    grid-template-columns: 1fr 1fr;
+  }
+  .buttonAndRating_container button {
+    width: 90%;
+  }
+}

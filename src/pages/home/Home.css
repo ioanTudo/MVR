@@ -1,0 +1,13 @@
+.filters_container {
+  display: flex;
+  flex-direction: column;
+
+  justify-self: center;
+
+  text-align: center;
+
+  padding: 15px;
+}
+.wrapperPage {
+  padding: 15px;
+}

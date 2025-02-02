@@ -1,0 +1,23 @@
+@media (min-width: 320px) {
+  .ulNav_container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    padding-left: 0;
+
+    margin: auto;
+
+    text-align: center;
+  }
+  .ulNav_container li {
+    list-style-type: none;
+  }
+  .header_container {
+    padding: 10px;
+  }
+}
+@media (min-width: 1200px) {
+  .ulNav_container {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
