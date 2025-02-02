@@ -20,7 +20,7 @@ function App() {
     <CurrentPageContext.Provider value={{ currentPage, setCurrentPage }}>
       <QueryContext.Provider value={{ query, setQuery }}>
         <FavouriteContext.Provider value={favouriteContext}>
-          <BrowserRouter>
+          <BrowserRouter basename="/MVR">
             <Routes>
               <Route index element={<Home />} />
               <Route
