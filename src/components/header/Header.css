@@ -1,3 +1,40 @@
+.header_container {
+  padding: 20px;
+
+  border-bottom: 1px solid black;
+}
+.ulNav_container li {
+  font-size: 23px;
+
+  align-self: center;
+
+  text-transform: capitalize;
+}
+.header_container a {
+  text-decoration: none;
+
+  color: black;
+
+  cursor: pointer;
+}
+.haeader_container a:hover {
+  text-decoration: underline;
+}
+.header_container input[type="text"] {
+  width: 100px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+}
+
+.header_container input {
+  border-radius: 20px;
+
+  padding: 5px;
+}
+.header_container input::placeholder {
+  text-transform: capitalize;
+}
+
 @media (min-width: 320px) {
   .ulNav_container {
     display: grid;
@@ -11,13 +48,32 @@
   }
   .ulNav_container li {
     list-style-type: none;
+
+    font-size: 20px;
   }
-  .header_container {
+}
+@media (min-width: 375px) {
+  .header_container input {
     padding: 10px;
   }
 }
 @media (min-width: 1200px) {
   .ulNav_container {
     grid-template-columns: 1fr 1fr 1fr;
+  }
+  .header_container input {
+    padding: 10px;
+  }
+  .header_container input[type="text"]:focus {
+    width: 100%;
+  }
+  .header_container input[type="text"] {
+    width: 150px;
+  }
+  .myList_li:hover {
+    text-decoration: underline;
+  }
+  .home_li:hover {
+    text-decoration: underline;
   }
 }

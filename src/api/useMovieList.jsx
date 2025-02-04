@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 
-export const useMoviesList = (genreId, currentPageProp) => {
+export const useMoviesList = (genreId) => {
   const [movieList, setMovieList] = useState([]);
 
   useEffect(() => {
     const fetchMovies = async () => {
       try {
-        const url = `https://api.themoviedb.org/3/discover/movie?page=${currentPageProp}${genreId}`;
+        const url = `https://api.themoviedb.org/3/discover/movie?&with_genres=${
+          genreId || ""
+        }`;
         const options = {
           method: "GET",
           headers: {
@@ -18,15 +20,19 @@ export const useMoviesList = (genreId, currentPageProp) => {
 
         const response = await fetch(url, options);
         const data = await response.json();
+
+        if (!data.results) {
+          throw new Error("No movies found");
+        }
+
         setMovieList(data.results);
-        console.log(data.results);
       } catch (error) {
         console.error("Trouble fetching movies:", error);
       }
     };
 
     fetchMovies();
-  }, [currentPageProp, genreId]);
+  }, [genreId]);
 
   return { movieList };
 };

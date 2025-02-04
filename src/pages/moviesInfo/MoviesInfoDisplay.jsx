@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import "./MovieInfo.css";
 import { Comments } from "./Comments";
-import { CurrentPageContext, FavouriteContext } from "../../contexts/contexts";
+import { FavouriteContext } from "../../contexts/contexts";
 
 export const MoviesInfoDisplay = ({
   title,
@@ -9,6 +9,7 @@ export const MoviesInfoDisplay = ({
   overview,
   release_date,
   id,
+  genres = [],
 }) => {
   const [favourite, setFavourite] = useContext(FavouriteContext);
   const handleAddToFav = () => {
@@ -44,19 +45,33 @@ export const MoviesInfoDisplay = ({
           </span>
           <hr />
           <span>
-            <strong>
-              Release Date: <br />
-            </strong>
+            <strong>Release Date: </strong>
             {release_date}
           </span>
+          <hr />
+          <div style={{ display: "flex", flexDirection: "row" }}>
+            <strong>Genres: </strong>
+            {genres.map((gen, index) => (
+              <div key={index}>
+                <span>{gen.name}</span>|
+              </div>
+            ))}
+          </div>
         </div>
       </div>
       <div className="addFav_container">
         <div className="btns_container">
           {filterMovie ? (
-            <button onClick={() => handleDelete(id)}>remove from list</button>
+            <button
+              className="delBtn buttonFav"
+              onClick={() => handleDelete(id)}
+            >
+              remove from list
+            </button>
           ) : (
-            <button onClick={handleAddToFav}>add to favorites</button>
+            <button className="addToFavBtn buttonFav" onClick={handleAddToFav}>
+              add to favorites
+            </button>
           )}
         </div>
 

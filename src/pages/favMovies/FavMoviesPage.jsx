@@ -14,7 +14,7 @@ export const FavMoviesPage = ({ handleDelete }) => {
   return (
     <TemplatePageDisplay>
       <div style={{ height: "100vh", overflow: "scroll" }}>
-        <h1>My list</h1>
+        <h1 style={{ textAlign: "center" }}>My list</h1>
         {favourite.length === 0 ? (
           <p>Your favourite list is empty.</p>
         ) : (

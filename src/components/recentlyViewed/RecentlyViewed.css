@@ -1,0 +1,19 @@
+.recentlyViewed_container {
+  display: flex;
+}
+@media (min-width: 320px) {
+  .recentlyViewed_container {
+    gap: 15px;
+
+    overflow-x: scroll;
+    overflow-y: hidden;
+
+    white-space: nowrap;
+  }
+}
+
+@media (min-width: 1200px) {
+  .recentlyViewed_container {
+    justify-content: center;
+  }
+}

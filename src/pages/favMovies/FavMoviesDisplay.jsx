@@ -30,7 +30,12 @@ export const FavMoviesDisplay = ({ title, imageUrl, moviePath, id }) => {
             </Link>
           </div>
           <div className="deleteBtn_container">
-            <button onClick={() => handleDelete(id)}>remove</button>
+            <button className="removeBtn" onClick={() => handleDelete(id)}>
+              <i
+                className="fa fa-close"
+                style={{ fontSize: "28px", color: "red" }}
+              ></i>
+            </button>
           </div>
         </div>
 

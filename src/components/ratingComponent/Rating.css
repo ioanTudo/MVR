@@ -1,3 +1,42 @@
+.ratingSystem {
+  display: flex;
+
+  justify-content: center;
+}
+.stars_container {
+  align-self: center;
+}
+
 .starColor {
   color: gold;
+}
+.rating {
+  text-transform: capitalize;
+}
+.ratingNotes {
+  display: flex;
+
+  align-self: center;
+}
+.stars_wrapper {
+  display: flex;
+  flex-direction: row;
+
+  margin: auto;
+}
+@media (min-width: 320px) {
+  .ratingSystem {
+    flex-direction: column;
+  }
+}
+@media (min-width: 500px) {
+  .ratingSystem span {
+    margin: auto;
+    justify-self: center;
+  }
+}
+@media (min-width: 1200px) {
+  .ratingSystem {
+    flex-direction: column;
+  }
 }

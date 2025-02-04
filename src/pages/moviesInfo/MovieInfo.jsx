@@ -1,18 +1,18 @@
 import { useParams } from "react-router";
 import { TemplatePageDisplay } from "../template/TemplatePageDisplay";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { MoviesInfoDisplay } from "./MoviesInfoDisplay.jsx";
-import { CurrentPageContext } from "../../contexts/contexts.jsx";
 
 export const MovieInfo = ({ handleDelete }) => {
   const { movieId } = useParams();
-  const { currentPage } = useContext(CurrentPageContext);
-  const [movieList, setMovieList] = useState([]);
+  const [movie, setMovie] = useState("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchMovies = async () => {
+    const fetchMovie = async () => {
       try {
-        const url = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page${currentPage}&sort_by=popularity.desc`;
+        setLoading(true);
+        const url = `https://api.themoviedb.org/3/movie/${movieId}?language=en-US`;
         const options = {
           method: "GET",
           headers: {
@@ -23,29 +23,34 @@ export const MovieInfo = ({ handleDelete }) => {
         };
 
         const response = await fetch(url, options);
+
         const data = await response.json();
-        setMovieList(data.results);
-        console.log(data.results);
+        setMovie(data);
+        console.log(data);
       } catch (error) {
-        console.error("Trouble fetching movies:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
-    fetchMovies();
-  }, [movieId, currentPage]);
+    fetchMovie();
+  }, [movieId]);
 
-  const filterMovie = movieList.find((movie) => movie.id === parseInt(movieId));
+  if (loading) {
+    return <h1>loading..</h1>;
+  }
 
   return (
     <TemplatePageDisplay>
-      {filterMovie ? (
+      {movie ? (
         <MoviesInfoDisplay
-          id={filterMovie.id}
-          title={filterMovie.title}
-          imageUrl={filterMovie.poster_path}
-          overview={filterMovie.overview}
-          release_date={filterMovie.release_date}
-          onDelete={() => handleDelete(filterMovie.id)}
+          id={movie.id}
+          title={movie.title}
+          imageUrl={movie.poster_path}
+          overview={movie.overview}
+          release_date={movie.release_date}
+          genres={movie.genres}
+          onDelete={() => handleDelete(movie.id)}
         />
       ) : (
         <div>Movie not found</div>

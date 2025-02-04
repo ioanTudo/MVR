@@ -4,7 +4,6 @@ import { Rating } from "../../components/ratingComponent/Rating";
 export const Comments = () => {
   const [comments, setComments] = useState([]);
   const [input, setInput] = useState("");
-  const [name, setName] = useState([]);
 
   const addComment = () => {
     if (String(input).trim() !== "") {
@@ -14,9 +13,6 @@ export const Comments = () => {
     }
   };
 
-  useEffect(() => {
-    console.log(input);
-  }, [input]);
   return (
     <>
       <h2>Leave a comment</h2>
@@ -52,7 +48,11 @@ export const Comments = () => {
             value={input}
           />
           <div className="buttonAndRating_container">
-            <button disabled={input.length === 0} onClick={addComment}>
+            <button
+              className="addCommentBtn"
+              disabled={input.length === 0}
+              onClick={addComment}
+            >
               add comment
             </button>
             <Rating />

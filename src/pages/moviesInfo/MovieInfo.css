@@ -1,13 +1,39 @@
 .movieInfo_container {
   display: grid;
 
-  justify-self: center;
-
   gap: 15px;
 }
-.img_container img {
-  width: 100%;
+.buttonFav,
+.addCommentBtn {
+  text-transform: capitalize;
+
+  align-items: center;
+
+  background-color: #fff;
+  border-radius: 24px;
+  border-style: none;
+
+  box-sizing: border-box;
+  color: #3c4043;
+  cursor: pointer;
+
+  font-size: 14px;
+  font-weight: 500;
+  height: 48px;
+
+  overflow: visible;
+  padding: 2px 24px;
+
+  transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 15ms linear 30ms, transform 270ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: auto;
+  will-change: transform, opacity;
+  z-index: 0;
 }
+
 .comment_container {
   display: grid;
 }
@@ -31,7 +57,7 @@
 }
 @media (min-width: 320px) {
   .movieInfo_container {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
   }
   .comment_container {
     grid-template-columns: 1fr;
@@ -67,5 +93,69 @@
   }
   .buttonAndRating_container button {
     width: 90%;
+  }
+  .img_container img {
+    display: flex;
+    margin: auto;
+  }
+  .img_container img {
+    width: 60%;
+  }
+  .addToFavBtn {
+    border: 2px solid #174ea6;
+  }
+  .addCommentBtn {
+    border: 2px solid green;
+  }
+  .delBtn {
+    border: 2px solid red;
+  }
+  .btns_container {
+    padding: 25px;
+
+    justify-self: center;
+  }
+}
+
+@media (min-width: 1200px) {
+  .img_container img {
+    width: 100%;
+  }
+  .movie_wrapper {
+    padding: 20px 25rem;
+    margin: auto;
+  }
+  .buttonFav:hover {
+    box-shadow: rgba(0, 0, 0, 0.2) 0 3px 5px -1px,
+      rgba(0, 0, 0, 0.14) 0 6px 10px 0, rgba(0, 0, 0, 0.12) 0 1px 18px 0;
+  }
+  .addCommentBtn:hover {
+    box-shadow: rgba(0, 0, 0, 0.2) 0 3px 5px -1px,
+      rgba(0, 0, 0, 0.14) 0 6px 10px 0, rgba(0, 0, 0, 0.12) 0 1px 18px 0;
+  }
+  .btns_container {
+    padding: 10px 0;
+
+    margin: auto;
+  }
+  .buttonFav:active {
+    box-shadow: 0 4px 4px 0 rgb(60 64 67 / 30%),
+      0 8px 12px 6px rgb(60 64 67 / 15%);
+    outline: none;
+  }
+  .delBtn:hover {
+    border: 2px solid red;
+  }
+  .addToFavBtn:hover {
+    border: 2px solid #174ea6;
+  }
+  .addCommentBtn:hover {
+    border: 2px solid green;
+  }
+  .buttonAndRating_container button {
+    width: 50%;
+  }
+  .img_container img {
+    width: 400px;
   }
 }

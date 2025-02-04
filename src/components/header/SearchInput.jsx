@@ -8,7 +8,7 @@ export const SearchInput = () => {
       <input
         type="text"
         value={query}
-        placeholder="search movie"
+        placeholder="search movies.."
         onChange={(e) => {
           console.log(e.target.value);
           setQuery(e.target.value);

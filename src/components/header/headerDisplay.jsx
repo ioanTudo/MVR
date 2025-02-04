@@ -1,21 +1,25 @@
 import { useContext } from "react";
-import { FavouriteContext } from "../../contexts/contexts";
 import { SearchInput } from "./SearchInput";
 import { Link } from "react-router";
+import { FavouriteContext } from "../../contexts/contexts";
 
-export const HeaderDisplay = (query, setQuery) => {
+export const HeaderDisplay = () => {
   return (
     <header className="header_container">
       <nav className="nav">
         <ul className="ulNav_container">
           <li>
-            <Link to={"/"}>home</Link>
+            <Link className="home_li" to={"/"}>
+              home
+            </Link>
           </li>
           <li>
-            <SearchInput query={query} setQuery={setQuery} />
+            <SearchInput />
           </li>
           <li>
-            <Link to={"/fav-movies"}>my list</Link>
+            <Link className="myList_li" to={"/fav-movies"}>
+              my list
+            </Link>
           </li>
         </ul>
       </nav>
