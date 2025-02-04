@@ -25,7 +25,7 @@ export const useMoviesList = (genreId) => {
           throw new Error("No movies found");
         }
 
-        setMovieList(data.results);
+        setMovieList(data.results.slice(0, 12));
       } catch (error) {
         console.error("Trouble fetching movies:", error);
       }

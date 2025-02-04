@@ -6,6 +6,12 @@
 
   padding: 15px;
 }
+.movies_wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+
+  justify-content: center;
+}
 .genre_wrapper select {
   width: 100%;
 

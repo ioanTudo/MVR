@@ -61,7 +61,7 @@ export const FilterMovies = () => {
 
         if (!data.results) throw new Error("No results found");
 
-        setList([...list, ...data.results]);
+        setList([...list, ...data.results.slice(0, 12)]);
 
         console.log("Fetched movies:", data.results);
       } catch (error) {
