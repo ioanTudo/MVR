@@ -32,17 +32,7 @@ Or using yarn:
 yarn install
 ```
 
-### 3. Configure Environment Variables
-
-Create a `.env` file in the root directory and set the required variables:
-
-```env
-
-```
-
-(Modify these values according to your setup)
-
-### 4. Running the Project Locally
+### 3. Running the Project Locally
 
 To start the development server:
 
@@ -58,7 +48,7 @@ yarn start
 
 The application should now be running at `http://localhost:3000/`
 
-### 5. Running Tests
+### 4. Running Tests
 
 To execute unit tests:
 
@@ -72,7 +62,7 @@ Or using yarn:
 yarn test
 ```
 
-### 6. Building the Project
+### 5. Building the Project
 
 For production builds, run:
 
@@ -116,4 +106,4 @@ The backend should be accessible at `http://localhost:5000/` (or the configured 
 - If your project includes Docker support, provide instructions for running it in a container.
 - If any additional setup is needed, such as database migrations, include relevant commands here.
 
-For any issues, feel free to reach out via [email/contact details] or open an issue in the repository.
+For any issues, feel free to reach out via tuddorionut63@yahoo.com or open an issue in the repository.
