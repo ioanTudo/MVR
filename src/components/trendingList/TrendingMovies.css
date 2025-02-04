@@ -1,7 +1,5 @@
 .trending_container {
   display: flex;
-
-  padding: 30px 20px;
 }
 @media (min-width: 320px) {
   .trending_container {
