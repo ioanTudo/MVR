@@ -1,16 +1,29 @@
 import { useEffect, useState } from "react";
-import { Rating } from "../../components/ratingComponent/Rating";
+import { Rating } from "../../components/rating/Rating";
+import { useParams } from "react-router";
 
-export const Comments = () => {
+export const Comments = ({ commId }) => {
   const [comments, setComments] = useState([]);
   const [input, setInput] = useState("");
 
-  const addComment = () => {
-    if (String(input).trim() !== "") {
-      setComments([...comments, input]);
-
-      setInput("");
+  useEffect(() => {
+    try {
+      const favMovies =
+        JSON.parse(localStorage.getItem(`comments_${commId}`)) || [];
+      setComments(favMovies);
+    } catch (error) {
+      console.error("Error parsing 'savedComm' from localStorage:", error);
+      setComments([]);
     }
+  }, []);
+
+  const handleAddComm = (id) => {
+    if (!comments.find((comm) => comm.id === id)) {
+      const updatedList = [...comments, input];
+      setComments(updatedList);
+      localStorage.setItem(`comments_${commId}`, JSON.stringify(updatedList));
+    }
+    setInput("");
   };
 
   return (
@@ -51,7 +64,7 @@ export const Comments = () => {
             <button
               className="addCommentBtn"
               disabled={input.length === 0}
-              onClick={addComment}
+              onClick={handleAddComm}
             >
               add comment
             </button>

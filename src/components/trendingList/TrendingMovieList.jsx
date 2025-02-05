@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
 
-import "./TrendingMovies.css";
-
 export const TrendingMovieList = () => {
   const [trendingList, setTrendingList] = useState([]);
-
+  const [recentlyViewed, setRecentlyViewed] = useState(
+    JSON.parse(localStorage.getItem("recentlyViewedMovies")) || []
+  );
   useEffect(() => {
     const fetchTrendingMovies = async () => {
       try {
@@ -34,14 +34,29 @@ export const TrendingMovieList = () => {
     };
 
     fetchTrendingMovies();
-  }, []);
+  }, [recentlyViewed]);
+
+  const addToRecentlyViewed = (movie) => {
+    setRecentlyViewed(() => {
+      const updatedMovies = [
+        ...recentlyViewed.filter((m) => m.id !== movie.id),
+        movie,
+      ].slice(-10);
+
+      localStorage.setItem(
+        "recentlyViewedMovies",
+        JSON.stringify(updatedMovies)
+      );
+    });
+  };
   return (
     <>
-      <h1 style={{ textAlign: "center" }}>Trending Movies</h1>
+      <h1 style={{ textAlign: "left" }}>Trending Movies</h1>
       <div className="trending_container">
         {trendingList.map((movie) => (
           <div key={movie.id}>
             <Link
+              onClick={() => addToRecentlyViewed(movie)}
               className="linkToMovie"
               to={`/movies/${movie.id}/${movie.original_title}`}
             >

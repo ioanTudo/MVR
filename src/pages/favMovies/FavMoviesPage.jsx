@@ -1,16 +1,12 @@
 import { useContext, useEffect } from "react";
 import { TemplatePageDisplay } from "../template/TemplatePageDisplay";
-import { FavMoviesDisplay } from "./FavMoviesDisplay";
 import { FavouriteContext } from "../../contexts/contexts";
-
 import "./FavMovie.css";
+import { FavMoviesDisplay } from "./FavMoviesDisplay.jsx";
 
 export const FavMoviesPage = ({ handleDelete }) => {
   const [favourite] = useContext(FavouriteContext);
 
-  useEffect(() => {
-    console.log(favourite);
-  });
   return (
     <TemplatePageDisplay>
       <div style={{ height: "100vh", overflow: "scroll" }}>

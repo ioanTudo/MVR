@@ -1,23 +1,27 @@
-import { useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useState } from "react";
 import { useMovieGenres } from "../../api/useMovieGenres";
 import "./FilterMovies.css";
 import { Link } from "react-router-dom";
-import { useMoviesList } from "../../api/useMovieList";
-import { CurrentPageContext, QueryContext } from "../../contexts/contexts";
+import { FavouriteContext, QueryContext } from "../../contexts/contexts";
 import { useSearch } from "../../api/useSearch";
+import { RecentlyViewedComponent } from "../recentlyViewed/RecentlyViewedComponent";
+import { TrendingMovieList } from "../TrendingList/TrendingMovieList.jsx";
+import { RecommendedMoviesComponent } from "../RecommendedMovies/RecommendedMovies.jsx";
 
 export const FilterMovies = () => {
-  const { currentPage, setCurrentPage } = useContext(CurrentPageContext);
+  const [currentPage, setCurrentPage] = useState(1);
   const [selectedGenre, setSelectedGenre] = useState("");
   const { genreList = [] } = useMovieGenres();
-  const { movieList = [] } = useMoviesList(selectedGenre);
   const { query } = useContext(QueryContext);
-  const { movieSearchList = [] } = useSearch(query, currentPage);
+  const { movieSearchList = [] } = useSearch(query, currentPage, selectedGenre);
   const [list, setList] = useState([]);
-  const [recommendedMovies, setRecommendedMovies] = useState([]);
+  const [favourite, setFavourite] = useContext(FavouriteContext);
 
   const [recentlyViewed, setRecentlyViewed] = useState(
     JSON.parse(localStorage.getItem("recentlyViewedMovies")) || []
+  );
+  const [recommended, setRecommended] = useState(
+    JSON.parse(localStorage.getItem("recommendedMovies")) || []
   );
 
   const addToRecentlyViewed = (movie) => {
@@ -25,124 +29,114 @@ export const FilterMovies = () => {
       const updatedMovies = [
         ...recentlyViewed.filter((m) => m.id !== movie.id),
         movie,
-      ].slice(-5);
+      ].slice(-10);
 
-      movieList.filter(
-        (movie) =>
-          recentlyViewed.includes(selectedGenre) &&
-          !recentlyViewed.find((m) => m.id === movie.id)
-      );
       localStorage.setItem(
         "recentlyViewedMovies",
+
         JSON.stringify(updatedMovies)
       );
-      setRecommendedMovies(recommendedMovies);
-      return updatedMovies;
+    });
+    setRecommended(() => {
+      const reccMovies = [
+        ...recommended.filter((m) => m.id !== movie.genre_ids),
+        movie,
+      ].slice(-10);
+
+      localStorage.setItem("recommendedMovies", JSON.stringify(reccMovies));
     });
   };
 
-  useEffect(() => {
-    const fetchMovies = async () => {
-      try {
-        const url = `https://api.themoviedb.org/3/discover/movie?page=${
-          currentPage + 1
-        }`;
-        const options = {
-          method: "GET",
-          headers: {
-            accept: "application/json",
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYjE0YzM1YzU0ZDJjZDM4Yzk0NjkwY2UzMDI3MDk0ZSIsIm5iZiI6MTczODA5MzczMy41MjcsInN1YiI6IjY3OTkzNGE1MWJlMTE2NDA5YzIzODk4ZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.nTebm3iPBrMjCJcgW-ZUykU1iF95u99wfUTXy5g9Y4M",
-          },
-        };
+  const fetchMovies = async () => {
+    try {
+      const url = `https://api.themoviedb.org/3/discover/movie?page=${
+        currentPage + 1
+      }`;
+      const options = {
+        method: "GET",
+        headers: {
+          accept: "application/json",
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYjE0YzM1YzU0ZDJjZDM4Yzk0NjkwY2UzMDI3MDk0ZSIsIm5iZiI6MTczODA5MzczMy41MjcsInN1YiI6IjY3OTkzNGE1MWJlMTE2NDA5YzIzODk4ZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.nTebm3iPBrMjCJcgW-ZUykU1iF95u99wfUTXy5g9Y4M",
+        },
+      };
 
-        const response = await fetch(url, options);
-        const data = await response.json();
+      const response = await fetch(url, options);
+      const data = await response.json();
 
-        if (!data.results) throw new Error("No results found");
+      if (!data.results) throw new Error("No results found");
 
-        setList([...list, ...data.results.slice(0, 16)]);
+      setList([...list, ...data.results.slice(0, 16)]);
 
-        console.log("Fetched movies:", data.results);
-      } catch (error) {
-        console.error("Trouble fetching movies:", error);
-      }
-    };
-
-    fetchMovies();
-  }, [currentPage]);
+      console.log("Fetched movies:", data.results);
+    } catch (error) {
+      console.error("Trouble fetching movies:", error);
+    }
+  };
+  const handleNextPage = async (pageNo) => {
+    await fetchMovies(pageNo);
+    setCurrentPage(pageNo);
+  };
+  useCallback(() => {
+    fetchMovies(currentPage);
+  });
 
   return (
-    <>
-      <h1>Discover movies</h1>
-      <div className="genre_wrapper">
-        <label htmlFor="genre-type">Genres</label>
-        <select
-          name="genre-type"
-          id="genre-type"
-          value={selectedGenre}
-          onChange={(e) => setSelectedGenre(e.target.value)}
-        >
-          <option value="">Select a genre</option>
-          {genreList.map((genre) => (
-            <option key={genre.id} value={genre.id}>
-              {genre.name}
-            </option>
-          ))}
-        </select>
+    <div>
+      <div className="filter_title_container">
+        <h1>Discover movies</h1>
+        <div className="genre_wrapper">
+          <select
+            name="genre-type"
+            id="genre-type"
+            value={selectedGenre}
+            onChange={(e) => setSelectedGenre(e.target.value)}
+          >
+            <option value="">Select a genre</option>
+            {genreList.map((genre) => (
+              <option key={genre.id} value={genre.id}>
+                {genre.name}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
 
       <div className="movies_wrapper">
-        {(query ? movieSearchList : movieList).map((movie) => (
-          <Link
-            key={movie.id}
-            className="linkToMovie"
-            to={`/movies/${movie.id}/${movie.original_title}`}
-            onClick={() => addToRecentlyViewed(movie)}
-          >
-            <div
-              style={{
-                backgroundImage: `url(https://image.tmdb.org/t/p/w500/${movie.poster_path})`,
-              }}
-              className="movie_container"
+        {movieSearchList.map((itm) => (
+          <div key={itm.id}>
+            <Link
+              onClick={() => addToRecentlyViewed(itm)}
+              className="linkToMovie"
+              to={`/movies/${itm.id}/${itm.original_title}`}
             >
-              <div className="title_container">
-                <span>{movie.original_title}</span>
-              </div>
-            </div>
-          </Link>
-        ))}
-        {currentPage > 1
-          ? list.map((item) => (
-              <Link
-                key={item.id}
-                className="linkToMovie"
-                to={`/movies/${item.id}/${item.original_title}`}
-                onClick={() => addToRecentlyViewed(item)}
+              <div
+                style={{
+                  backgroundImage: `url(https://image.tmdb.org/t/p/w500/${itm.poster_path})`,
+                }}
+                className="movie_container"
               >
-                <div
-                  style={{
-                    backgroundImage: `url(https://image.tmdb.org/t/p/w500/${item.poster_path})`,
-                  }}
-                  className="movie_container"
-                >
-                  <div className="title_container">
-                    <span>{item.original_title}</span>
-                  </div>
+                <div className="title_container">
+                  <span>{itm.original_title}</span>
                 </div>
-              </Link>
-            ))
-          : ""}
+              </div>
+            </Link>
+          </div>
+        ))}
+        <div className="pagination_container">
+          <button
+            className="paginationBtn"
+            onClick={() => handleNextPage(currentPage + 1)}
+          >
+            Load more
+          </button>
+        </div>
       </div>
-
-      <div className="pagination_container">
-        <button
-          className="paginationBtn"
-          onClick={() => setCurrentPage(currentPage + 1)}
-        >
-          Load more
-        </button>
+      <div className="wrapper_components">
+        <RecentlyViewedComponent />
+        <TrendingMovieList />
+        <RecommendedMoviesComponent />
       </div>
-    </>
+    </div>
   );
 };

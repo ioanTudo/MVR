@@ -1,12 +1,27 @@
 import { useEffect, useState } from "react";
 
-export const useSearch = (query, currentPageProp) => {
+export const useSearch = (query, currentPageProp, genreId) => {
   const [movieSearchList, setMovieSearchList] = useState([]);
+  const [prevGenre, setGenre] = useState(genreId);
+  const [prevQuery, setPrevQuery] = useState(query);
 
   useEffect(() => {
     const fetchMovies = async () => {
+      const resetPage = query !== prevQuery || genreId !== prevGenre;
+      const nextPage = resetPage ? 1 : currentPageProp + 1;
+
       try {
-        const url = `https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=${currentPageProp}&query=${query}`;
+        let url;
+        if (query) {
+          url = `https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=${nextPage}&query=${query}&with_genres=${
+            genreId || ""
+          }`;
+        } else {
+          url = `https://api.themoviedb.org/3/discover/movie?include_adult=false&language=en-US&page=${nextPage}&query=${query}&with_genres=${
+            genreId || ""
+          }`;
+        }
+
         const options = {
           method: "GET",
           headers: {
@@ -18,7 +33,14 @@ export const useSearch = (query, currentPageProp) => {
 
         const response = await fetch(url, options);
         const data = await response.json();
-        setMovieSearchList(data.results);
+
+        const currentResults = resetPage ? [] : movieSearchList;
+        setMovieSearchList([...currentResults, ...data.results]);
+
+        if (resetPage) {
+          setGenre(genreId);
+          setPrevQuery(query);
+        }
         console.log(data.results);
       } catch (error) {
         console.error("Trouble fetching movies:", error);
@@ -26,7 +48,7 @@ export const useSearch = (query, currentPageProp) => {
     };
 
     fetchMovies();
-  }, [currentPageProp, query]);
+  }, [currentPageProp, query, genreId]);
 
   return { movieSearchList };
 };

@@ -1,14 +1,14 @@
-import { useCallback, useContext, useState } from "react";
-import { Link, useParams } from "react-router";
+import { useContext } from "react";
+import { Link } from "react-router";
 import { FavouriteContext } from "../../contexts/contexts";
 
 export const FavMoviesDisplay = ({ title, imageUrl, moviePath, id }) => {
   const [favourite, setFavourite] = useContext(FavouriteContext);
 
-  const handleDelete = (indexMovie) => {
-    const newList = favourite.filter((item) => item.id !== indexMovie);
-
-    setFavourite(newList);
+  const handleDelete = (id) => {
+    const updatedList = favourite.filter((movie) => movie.id !== id);
+    setFavourite(updatedList);
+    localStorage.removeItem("savedFavs", JSON.stringify(updatedList));
   };
 
   return (

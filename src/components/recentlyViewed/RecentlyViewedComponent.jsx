@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./RecentlyViewed.css";
 
-export const RecentlyViewed = () => {
+export const RecentlyViewedComponent = () => {
   const [recentlyViewed, setRecentlyViewed] = useState([]);
 
   useEffect(() => {
@@ -25,7 +25,7 @@ export const RecentlyViewed = () => {
 
   return (
     <>
-      <h1 style={{ textAlign: "center" }}>Recently viewed</h1>
+      <h1 style={{ textAlign: "left" }}>Recently viewed</h1>
       <div className="recentlyViewed_container">
         {recentlyViewed.length === 0 ? (
           <p>No recently viewed movies</p>
