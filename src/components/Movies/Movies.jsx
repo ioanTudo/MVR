@@ -21,7 +21,7 @@ export const Movies = () => {
   const { movieSearchList = [] } = useSearch(query, currentPage, selectedGenre);
   const { trendingMovies } = useTrendingMovies();
   const { recommended, recentlyViewed } = useRecommendedMovieAndRecently();
-  const { topRatedMovies = [] } = useTopRatedMovies(topRatedCurrentPage);
+  const { topRatedMovies = [] } = useTopRatedMovies(topRatedCurrentPage, query);
 
   return (
     <div className="page_wrapper">

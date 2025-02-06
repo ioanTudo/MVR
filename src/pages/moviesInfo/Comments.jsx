@@ -12,7 +12,6 @@ export const Comments = ({ commId }) => {
         JSON.parse(localStorage.getItem(`comments_${commId}`)) || [];
       setComments(favMovies);
     } catch (error) {
-      console.error("Error parsing 'savedComm' from localStorage:", error);
       setComments([]);
     }
   }, []);

@@ -10,7 +10,6 @@ export const SearchInput = () => {
         value={query}
         placeholder="search movies.."
         onChange={(e) => {
-          console.log(e.target.value);
           setQuery(e.target.value);
         }}
       />

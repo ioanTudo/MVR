@@ -9,10 +9,6 @@ import { TemplateMovieDisplay } from "../../components/Templates/TemplateMovieDi
 export const FavMoviesPage = () => {
   const [favourite, setFavourite] = useContext(FavouriteContext);
 
-  useEffect(() => {
-    console.log(favourite);
-  });
-
   return (
     <TemplatePageDisplay>
       <div className="favMovie_bigWrapper">

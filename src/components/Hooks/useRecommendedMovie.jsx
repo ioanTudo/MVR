@@ -17,10 +17,6 @@ const useRecommendedMovieAndRecently = () => {
         setRecentlyViewed([]);
       }
     } catch (error) {
-      console.error(
-        "Error parsing 'recentlyViewedMovies' from localStorage:",
-        error
-      );
       setRecentlyViewed([]);
     }
   }, []);

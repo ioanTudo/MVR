@@ -45,7 +45,7 @@ export const MoviesInfoDisplay = ({
             <strong>Genres: </strong>
             {genres.map((gen, index) => (
               <div key={index}>
-                <span>{gen.name}</span> |
+                <span>{gen.name}</span>
               </div>
             ))}
           </div>

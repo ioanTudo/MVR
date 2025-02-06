@@ -26,9 +26,7 @@ const useTrendingMovies = () => {
           throw new Error("No movies found");
         }
         setTrendingMovies(data.results);
-      } catch (error) {
-        console.error("Trouble fetching movies:", error);
-      }
+      } catch (error) {}
     };
 
     fetchTrendingMovies();

@@ -27,9 +27,7 @@ const usePaginationMovies = () => {
         }
 
         setList(() => [...list, ...data.results.slice(0, 14)]);
-      } catch (error) {
-        console.error("Trouble fetching movies:", error);
-      }
+      } catch (error) {}
     };
 
     fetchMovies();
@@ -56,9 +54,7 @@ const usePaginationMovies = () => {
         }
 
         setTopRatedMovies(() => [...topRatedMovies, ...data.results]);
-      } catch (error) {
-        console.error("Trouble fetching top-rated movies:", error);
-      }
+      } catch (error) {}
     };
 
     fetchTopRatedMovies();
@@ -66,12 +62,10 @@ const usePaginationMovies = () => {
 
   const loadMore = () => {
     setCurrentPage(() => currentPage + 1);
-    console.log("loadMore called, new page:", currentPage + 1);
   };
 
   const loadMoreTopRated = () => {
     setTopRatedCurrentPage(() => topRatedCurrentPage + 1);
-    console.log("toprated called, new page:", topRatedCurrentPage + 1);
   };
 
   return {

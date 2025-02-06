@@ -11,7 +11,6 @@ const useAddTofav = () => {
       setFavouriteMovie(favMovies);
       setFavourite(favMovies);
     } catch (error) {
-      console.error("Error parsing 'savedFavs' from localStorage:", error);
       setFavouriteMovie([]);
       setFavourite([]);
     }

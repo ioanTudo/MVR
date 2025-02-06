@@ -19,10 +19,7 @@ export const useMovieGenres = () => {
         const response = await fetch(url, options);
         const data = await response.json();
         setGenreList(data.genres);
-        console.log(data.genres);
-      } catch (error) {
-        console.error("Trouble fetching:", error);
-      }
+      } catch (error) {}
     };
 
     fetchGenres();

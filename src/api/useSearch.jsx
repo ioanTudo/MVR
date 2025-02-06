@@ -41,10 +41,7 @@ export const useSearch = (query, currentPageProp, genreId) => {
           setGenre(genreId);
           setPrevQuery(query);
         }
-        console.log(data.results);
-      } catch (error) {
-        console.error("Trouble fetching movies:", error);
-      }
+      } catch (error) {}
     };
 
     fetchMovies();

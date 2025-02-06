@@ -9,8 +9,7 @@ export const Rating = () => {
   const [isDisabled, setIsDisabled] = useState(false);
   const handleMouseOverStar = (value) => {
     setHoverValue(value);
-    if (selectedRate) {
-      setHoverValue();
+    if ((selectedRate) => 1) {
       setIsDisabled(true);
     }
   };
