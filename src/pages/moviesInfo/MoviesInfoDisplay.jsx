@@ -1,8 +1,7 @@
-import { useContext, useEffect } from "react";
+import { useParams } from "react-router";
+import useAddTofav from "../../components/Hooks/useAddtoFav";
 import "./MovieInfo.css";
 import { Comments } from "./Comments";
-import { FavouriteContext } from "../../contexts/contexts";
-import { useParams } from "react-router";
 
 export const MoviesInfoDisplay = ({
   title,
@@ -10,36 +9,12 @@ export const MoviesInfoDisplay = ({
   overview,
   release_date,
   id,
-  genres,
+  genres = [],
 }) => {
   const { movieId } = useParams();
-  const [favourite, setFavourite] = useContext(FavouriteContext);
+  const { favouriteMovie, handleAddToFav, handleDelete } = useAddTofav();
 
-  useEffect(() => {
-    try {
-      const favMovies = JSON.parse(localStorage.getItem("savedFavs")) || [];
-      setFavourite(favMovies);
-    } catch (error) {
-      console.error("Error parsing 'savedFavs' from localStorage:", error);
-      setFavourite([]);
-    }
-  }, []);
-
-  const handleAddToFav = () => {
-    if (!favourite.find((movie) => movie.id === id)) {
-      const updatedList = [...favourite, { id, title, imageUrl, overview }];
-      setFavourite(updatedList);
-      localStorage.setItem("savedFavs", JSON.stringify(updatedList));
-    }
-  };
-
-  const handleDelete = (id) => {
-    const updatedList = favourite.filter((movie) => movie.id !== id);
-    setFavourite(updatedList);
-    localStorage.removeItem("savedFavs", JSON.stringify(updatedList));
-  };
-
-  const isFavourite = favourite.some((movie) => movie.id === id);
+  const isFavourite = favouriteMovie.some((movie) => movie.id === movieId);
 
   return (
     <div className="movie_wrapper">
@@ -50,11 +25,11 @@ export const MoviesInfoDisplay = ({
             alt={title}
           />
         </div>
+      </div>
+
+      <div className="addFav_container">
         <div className="info_container">
-          <span>
-            <strong>Title: </strong>
-            {title}
-          </span>
+          <h1>{title}</h1>
           <hr />
           <span>
             <strong>Info: </strong>
@@ -75,21 +50,27 @@ export const MoviesInfoDisplay = ({
             ))}
           </div>
         </div>
-      </div>
-
-      <div className="addFav_container">
         <div className="btns_container">
           {isFavourite ? (
             <button
               className="delBtn buttonFav"
-              onClick={() => handleDelete(id)}
+              onClick={() => handleDelete(movieId)}
             >
               Remove from Favorites
             </button>
           ) : (
             <button
               className="addToFavBtn buttonFav"
-              onClick={() => handleAddToFav(id)}
+              onClick={() =>
+                handleAddToFav({
+                  id: movieId,
+                  title,
+                  imageUrl,
+                  overview,
+                  release_date,
+                  genres,
+                })
+              }
             >
               Add to Favorites
             </button>

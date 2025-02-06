@@ -1,14 +1,17 @@
-.recentlyViewed_container {
+.movies_container {
   display: flex;
 }
+.loadMoreBtn {
+  display: flex;
+  justify-content: center;
+}
+
 @media (min-width: 320px) {
-  .recentlyViewed_container {
+  .movies_container {
     gap: 15px;
 
     overflow-x: scroll;
     overflow-y: hidden;
-
-    white-space: nowrap;
   }
 }
 

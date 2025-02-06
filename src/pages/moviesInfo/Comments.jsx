@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { Rating } from "../../components/rating/Rating";
-import { useParams } from "react-router";
+import { Rating } from "../../components/Rating/Rating";
+import "./MovieInfo.css";
 
 export const Comments = ({ commId }) => {
   const [comments, setComments] = useState([]);
@@ -62,7 +62,7 @@ export const Comments = ({ commId }) => {
           />
           <div className="buttonAndRating_container">
             <button
-              className="addCommentBtn"
+              className="buttonFav"
               disabled={input.length === 0}
               onClick={handleAddComm}
             >

@@ -1,46 +1,80 @@
 .header_container {
   padding: 20px;
+  background: linear-gradient(180deg, #868f96, transparent);
 
-  border-bottom: 1px solid black;
+  transition: background 0.3s ease-in-out, border-bottom 0.3s ease-in-out;
 }
+
 .logo {
-  width: 50px;
+  width: 100px;
+
+  transition: transform 0.3s ease-in-out;
 }
-.leftMenu_wrapper {
-  display: flex;
+
+.logo:hover {
+  transform: scale(1.1) rotate(5deg);
 }
+
 .ulNav_container li {
   font-size: 23px;
 
   align-self: center;
 
   text-transform: capitalize;
+
+  list-style-type: none;
+
+  transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
+
+.ulNav_container li:hover {
+  color: #fff;
+
+  transform: scale(1.1);
+}
+
 .header_container a {
   text-decoration: none;
 
   color: black;
 
   cursor: pointer;
+
+  transition: color 0.3s ease-in-out;
 }
-.haeader_container a:hover {
-  text-decoration: underline;
+
+.header_container a:hover {
+  color: white;
+
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
+
 .header_container input[type="text"] {
-  width: 100px;
-  -webkit-transition: width 0.4s ease-in-out;
-  transition: width 0.4s ease-in-out;
+  width: 120px;
+
+  transition: width 0.4s ease-in-out, background 0.3s ease-in-out;
+}
+
+.header_container input[type="text"]:focus {
+  width: 150px;
 }
 
 .header_container input {
-  border-radius: 20px;
-
   padding: 5px;
+
+  cursor: pointer;
+
+  border: 0;
 }
+
 .header_container input::placeholder {
   text-transform: capitalize;
-}
 
+  color: rgba(0, 0, 0, 0.6);
+}
+.ulNav_container {
+  padding-left: 0;
+}
 @media (min-width: 320px) {
   .header_container input {
     padding: 10px;
@@ -69,12 +103,8 @@
     text-align: center;
   }
 }
-@media (min-width: 700px) {
-  .ulNav_container {
-    display: grid;
 
-    grid-template-columns: 1fr 1fr;
-  }
+@media (min-width: 700px) {
   .leftMenu_wrapper {
     display: flex;
     flex-direction: row;
@@ -82,33 +112,5 @@
     margin: auto;
 
     gap: 20px;
-  }
-}
-@media (min-width: 1200px) {
-  .leftMenu_wrapper {
-    display: flex;
-    flex-direction: row;
-
-    gap: 20px;
-  }
-  .ulNav_container {
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-  }
-  .header_container input {
-    padding: 10px;
-  }
-  .header_container input[type="text"]:focus {
-    width: 100%;
-  }
-  .header_container input[type="text"] {
-    width: 150px;
-  }
-  .myList_li:hover {
-    text-decoration: underline;
-  }
-  .home_li:hover {
-    text-decoration: underline;
   }
 }

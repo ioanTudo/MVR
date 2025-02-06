@@ -1,7 +1,13 @@
 footer {
+  display: flex;
+  flex-direction: column;
+
+  background: linear-gradient(360deg, #868f96, transparent);
   margin-top: 20px;
 
   padding: 20px;
+
+  bottom: 0;
 
   position: relative;
 }

@@ -1,3 +1,7 @@
+#root {
+  background-color: rgba(128, 128, 128, 0.5);
+}
+
 .genre_wrapper {
   display: flex;
   flex-direction: column;
@@ -10,14 +14,21 @@
 
   align-items: center;
 }
-
-.movies_wrapper {
+.loadMoreBtn_container {
   display: flex;
-
-  gap: 15px;
-
-  overflow-x: scroll;
-  overflow-y: hidden;
+  margin: auto;
+  justify-content: center;
+}
+.bigWrapper {
+  display: flex;
+  flex-direction: row;
+}
+.genre_wrapper {
+  padding-bottom: 0px;
+}
+.genre_wrapper {
+  padding: 0px 0px 15px 0px;
+  margin-left: 0;
 }
 .genre_wrapper select {
   width: 100%;
@@ -25,14 +36,20 @@
   padding: 5px;
 }
 
+.movies_wrapper {
+  display: flex;
+  gap: 15px;
+  flex-direction: row;
+
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
 .movie_container {
   display: flex;
   flex-direction: column;
 
   cursor: pointer;
-
-  border: 1px solid black;
-  border-radius: 10px;
 }
 
 .title_container {
@@ -94,14 +111,14 @@
 }
 
 @media (min-width: 320px) {
+  .page_wrapper {
+    padding: 15px;
+  }
   .filter_title_container {
     display: grid;
     grid-template-columns: 1fr;
   }
-  .genre_wrapper {
-    padding: 0px 0px 15px 0px;
-    margin-left: 0;
-  }
+
   .paginationBtn {
     border: 1px solid black;
   }
@@ -132,8 +149,9 @@
 
     gap: 15px;
   }
-  .genre_wrapper {
-    padding-bottom: 0px;
+
+  .page_wrapper {
+    padding: 15px 20px;
   }
 }
 

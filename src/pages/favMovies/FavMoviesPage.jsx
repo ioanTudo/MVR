@@ -1,30 +1,27 @@
-import { useContext, useEffect } from "react";
-import { TemplatePageDisplay } from "../template/TemplatePageDisplay";
-import { FavouriteContext } from "../../contexts/contexts";
-import "./FavMovie.css";
-import { FavMoviesDisplay } from "./FavMoviesDisplay.jsx";
+import { useContext, useEffect, useState } from "react";
+import { TemplatePageDisplay } from "../../components/Templates/TemplatePage.jsx";
+import { FavouriteContext } from "../../Contexts/Contexts.jsx";
+import "../../components/Movies/Movies.css";
 
-export const FavMoviesPage = ({ handleDelete }) => {
-  const [favourite] = useContext(FavouriteContext);
+import "./FavMovie.css";
+import { TemplateMovieDisplay } from "../../components/Templates/TemplateMovieDisplay.jsx";
+
+export const FavMoviesPage = () => {
+  const [favourite, setFavourite] = useContext(FavouriteContext);
+
+  useEffect(() => {
+    console.log(favourite);
+  });
 
   return (
     <TemplatePageDisplay>
-      <div style={{ height: "100vh", overflow: "scroll" }}>
+      <div className="favMovie_bigWrapper">
         <h1 style={{ textAlign: "center" }}>My list</h1>
-        {favourite.length === 0 ? (
-          <p>Your favourite list is empty.</p>
-        ) : (
-          favourite.map((fav, index) => (
-            <FavMoviesDisplay
-              key={index}
-              title={fav.title}
-              imageUrl={fav.imageUrl}
-              moviePath={fav.title}
-              id={fav.id}
-              onDelete={() => handleDelete(fav.id)}
-            />
-          ))
-        )}
+        <div className="movie_display_wrapper">
+          <div className="movies_wrapper">
+            <TemplateMovieDisplay movieType={favourite} />
+          </div>
+        </div>
       </div>
     </TemplatePageDisplay>
   );

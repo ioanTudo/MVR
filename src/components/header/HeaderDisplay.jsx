@@ -1,6 +1,6 @@
-import { SearchInput } from "./SearchInput";
+import { SearchInput } from "../SearchInput/SearchInput";
 import { Link } from "react-router";
-import Logo from "../../images/film.png";
+import Logo from "../../images/clapperboard.png";
 
 export const HeaderDisplay = () => {
   return (
@@ -9,13 +9,13 @@ export const HeaderDisplay = () => {
         <ul className="ulNav_container">
           <div className="leftMenu_wrapper">
             <li>
-              <Link to={"/"}>
-                <img className="logo" src={Logo} alt="" />
+              <Link className="home_li" to={"/"}>
+                home
               </Link>
             </li>
             <li>
-              <Link className="home_li" to={"/"}>
-                home
+              <Link to={"/"}>
+                <img className="logo" src={Logo} alt="" />
               </Link>
             </li>
             <li>
@@ -24,7 +24,7 @@ export const HeaderDisplay = () => {
               </Link>
             </li>
           </div>
-          <li>
+          <li className="searchInput">
             <SearchInput />
           </li>
         </ul>

@@ -45,6 +45,7 @@
 }
 .commentDisplay_container {
   overflow: scroll;
+  background-color: white;
 }
 .btns_container button {
   cursor: pointer;
@@ -57,7 +58,7 @@
 }
 @media (min-width: 320px) {
   .movieInfo_container {
-    grid-template-columns: 1fr;
+    margin: auto;
   }
   .comment_container {
     grid-template-columns: 1fr;
@@ -72,8 +73,6 @@
     padding: 20px;
   }
   .commentDisplay_container {
-    border: 1px solid black;
-
     width: 100%;
     height: 300px;
   }
@@ -97,23 +96,51 @@
   .img_container img {
     display: flex;
     margin: auto;
-  }
-  .img_container img {
+
     width: 60%;
   }
-  .addToFavBtn {
-    border: 2px solid #174ea6;
-  }
-  .addCommentBtn {
-    border: 2px solid green;
-  }
-  .delBtn {
+
+  .buttonFav {
     border: 2px solid red;
   }
+
   .btns_container {
     padding: 25px;
 
     justify-self: center;
+  }
+}
+.ulNav_container {
+  display: flex;
+  flex-direction: column;
+
+  padding-left: 0;
+
+  gap: 15px;
+
+  margin: auto;
+
+  text-align: center;
+}
+@media (min-width: 700px) {
+  .ulNav_container {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+  }
+  .leftMenu_wrapper {
+    display: flex;
+    flex-direction: row;
+
+    margin: auto;
+
+    gap: 20px;
+  }
+  .img_container img {
+    display: flex;
+    margin: auto;
+
+    width: 50%;
   }
 }
 
@@ -122,8 +149,15 @@
     width: 100%;
   }
   .movie_wrapper {
-    padding: 20px 25rem;
-    margin: auto;
+    display: grid;
+    grid-template-columns: 0.5fr 0.5fr;
+
+    justify-content: center;
+
+    padding: 20px;
+  }
+  .movie_wrapper img {
+    justify-self: center;
   }
   .buttonFav:hover {
     box-shadow: rgba(0, 0, 0, 0.2) 0 3px 5px -1px,
@@ -143,19 +177,19 @@
       0 8px 12px 6px rgb(60 64 67 / 15%);
     outline: none;
   }
-  .delBtn:hover {
-    border: 2px solid red;
-  }
-  .addToFavBtn:hover {
-    border: 2px solid #174ea6;
-  }
-  .addCommentBtn:hover {
-    border: 2px solid green;
-  }
+
   .buttonAndRating_container button {
     width: 50%;
   }
   .img_container img {
-    width: 400px;
+    width: 100%;
+    height: 100%;
+  }
+  .movieInfo_container {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  .movie_wrapper {
+    padding: 0 100px;
   }
 }

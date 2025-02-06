@@ -1,12 +1,12 @@
-import { FilterMovies } from "../../components/filter/FilterMovies";
+import { FilterMovies, Movies } from "../../components/Movies/Movies";
 import "./Home.css";
-import { TemplatePageDisplay } from "../template/TemplatePageDisplay";
+import { TemplatePageDisplay } from "../../components/Templates/TemplatePage";
 
 const HomeDisplay = () => {
   return (
     <TemplatePageDisplay>
       <div>
-        <FilterMovies />
+        <Movies />
       </div>
     </TemplatePageDisplay>
   );

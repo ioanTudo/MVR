@@ -6,10 +6,12 @@ import "./Rating.css";
 export const Rating = () => {
   const [selectedRate, setSelectedRate] = useState(0);
   const [hoverValue, setHoverValue] = useState(undefined);
+  const [isDisabled, setIsDisabled] = useState(false);
   const handleMouseOverStar = (value) => {
     setHoverValue(value);
     if (selectedRate) {
       setHoverValue();
+      setIsDisabled(true);
     }
   };
 
@@ -20,9 +22,9 @@ export const Rating = () => {
           return (
             <div className="stars_container" key={index}>
               <FaStar
-                style={{ cursor: "pointer" }}
+                className={isDisabled ? "noPointer" : "pointer"}
                 onClick={() => setSelectedRate(index + 1)}
-                color={(hoverValue || selectedRate) > index ? "gold" : ""}
+                color={(hoverValue || selectedRate) > index ? "red" : ""}
                 size={30}
                 onMouseOver={() => handleMouseOverStar(index + 1)}
               />
@@ -45,12 +47,10 @@ export const Rating = () => {
         ) : (
           ""
         )}
-        {selectedRate === 2 ? (
+        {selectedRate <= 2 && selectedRate > 0 && (
           <span className="rating" style={{ color: "red" }}>
-            awful movie!
+            Awful movie!
           </span>
-        ) : (
-          ""
         )}
       </div>
     </div>

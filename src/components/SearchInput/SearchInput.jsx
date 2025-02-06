@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { QueryContext } from "../../contexts/contexts";
+import { QueryContext } from "../../Contexts/Contexts";
 
 export const SearchInput = () => {
   const { query, setQuery } = useContext(QueryContext);

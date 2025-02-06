@@ -7,9 +7,6 @@
   align-self: center;
 }
 
-.starColor {
-  color: gold;
-}
 .rating {
   text-transform: capitalize;
 }
@@ -23,6 +20,12 @@
   flex-direction: row;
 
   margin: auto;
+}
+.noPointer {
+  pointer-events: none;
+}
+.pointer {
+  cursor: pointer;
 }
 @media (min-width: 320px) {
   .ratingSystem {

@@ -1,15 +1,11 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import { MovieInfo } from "./pages/moviesInfo/MovieInfo.jsx";
-import {
-  CurrentPageContext,
-  FavouriteContext,
-  QueryContext,
-} from "./contexts/contexts.jsx";
+import { MovieInfo } from "./Pages/MoviesInfo/MovieInfo.jsx";
+import { FavouriteContext, QueryContext } from "./Contexts/Contexts.jsx";
 import { StrictMode, useState } from "react";
-import { FavMoviesPage } from "./pages/FavMovies/FavMoviesPage.jsx";
-import Home from "./pages/home/Home.jsx";
+import { FavMoviesPage } from "./Pages/FavMovies/FavMoviesPage.jsx";
+import Home from "./Pages/Home/Home.jsx";
 
 function App() {
   const favouriteContext = useState(
