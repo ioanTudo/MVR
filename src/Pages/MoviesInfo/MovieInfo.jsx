@@ -1,6 +1,6 @@
 import { useParams } from "react-router";
 import { MoviesInfoDisplay } from "./MoviesInfoDisplay.jsx";
-import { TemplatePageDisplay } from "../../components/Templates/TemplatePage.jsx";
+import { TemplatePageDisplay } from "../../Components/Templates/TemplatePage.jsx";
 import useMovieInfo from "../../api/getMovieInfo.jsx";
 
 export const MovieInfo = ({ handleDelete }) => {

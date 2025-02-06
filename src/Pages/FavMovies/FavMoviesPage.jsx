@@ -1,10 +1,10 @@
-import { useContext, useEffect, useState } from "react";
-import { TemplatePageDisplay } from "../../components/Templates/TemplatePage.jsx";
+import { useContext } from "react";
+import { TemplatePageDisplay } from "../../Components/Templates/TemplatePage.jsx";
 import { FavouriteContext } from "../../Contexts/Contexts.jsx";
-import "../../components/Movies/Movies.css";
+import "../../Components/Movies/Movies.css";
 
 import "./FavMovie.css";
-import { TemplateMovieDisplay } from "../../components/Templates/TemplateMovieDisplay.jsx";
+import { TemplateMovieDisplay } from "../../Components/Templates/TemplateMovieDisplay.jsx";
 
 export const FavMoviesPage = () => {
   const [favourite, setFavourite] = useContext(FavouriteContext);

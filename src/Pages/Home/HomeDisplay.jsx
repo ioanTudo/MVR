@@ -1,6 +1,6 @@
-import { FilterMovies, Movies } from "../../components/Movies/Movies";
+import { FilterMovies, Movies } from "../../Components/Movies/Movies";
 import "./Home.css";
-import { TemplatePageDisplay } from "../../components/Templates/TemplatePage";
+import { TemplatePageDisplay } from "../../Components/Templates/TemplatePage";
 
 const HomeDisplay = () => {
   return (

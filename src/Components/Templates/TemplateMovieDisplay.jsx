@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import "./TemplateMoviesDisplay.css";
 import useRecommendedMovieAndRecently from "../Hooks/useRecommendedMovie";
-import Pagination from "../Pagination/Pagination";
 
 export const TemplateMovieDisplay = ({
   title,

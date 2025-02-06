@@ -1,5 +1,5 @@
 import { useParams } from "react-router";
-import useAddTofav from "../../components/Hooks/useAddtoFav";
+import useAddTofav from "../../Components/Hooks/useAddtoFav";
 import "./MovieInfo.css";
 import { Comments } from "./Comments";
 

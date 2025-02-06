@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Rating } from "../../components/Rating/Rating";
+import { Rating } from "../../Components/Rating/Rating";
 import "./MovieInfo.css";
 
 export const Comments = ({ commId }) => {
