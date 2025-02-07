@@ -76,19 +76,6 @@ Or using yarn:
 yarn build
 ```
 
-### 7. Running the Backend (If Applicable)
-
-Navigate to the backend directory and follow similar steps to install dependencies and start the server:
-
-```sh
-cd backend
-npm install
-npm start
-```
-
-The backend should be accessible at `http://localhost:5000/` (or the configured port).
-
-## Screenshots
 
 ## Troubleshooting
 
@@ -99,11 +86,7 @@ The backend should be accessible at `http://localhost:5000/` (or the configured 
   npm install
   ```
 - Ensure you have the correct Node.js version installed.
-- Check that all required environment variables are correctly set.
 
 ## Additional Notes
-
-- If your project includes Docker support, provide instructions for running it in a container.
-- If any additional setup is needed, such as database migrations, include relevant commands here.
 
 For any issues, feel free to reach out via tuddorionut63@yahoo.com or open an issue in the repository.
