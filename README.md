@@ -1,9 +1,8 @@
-
-### Project -  Movie Rating System  
+### Project - Movie Rating System
 
 A web-based project that allows users to rate and browse movies efficiently. This system was designed to showcase core technical concepts such as interactive user interfaces, dynamic data updates, and smooth UI/UX for end users.
 
-### Project Overview  
+### Project Overview
 
 • Users should be able to see a grid of movies
 • Users should be able to see a grid of movies and TV shows retrieved from an external
@@ -18,10 +17,11 @@ viewing history.
 • Users should see a "Recently Viewed" section displaying their recently viewed movies
 or TV shows.
 
-Before you begin, make sure you have the following tools installed:  
-- **Node.js** (Recommended: Latest LTS version)  
-- **npm** or **yarn** (Choose one package manager)  
-- **Git**  
+Before you begin, make sure you have the following tools installed:
+
+- **Node.js** (Recommended: Latest LTS version)
+- **npm** or **yarn** (Choose one package manager)
+- **Git**
 
 ## Installation Steps
 
@@ -89,8 +89,8 @@ Or using yarn:
 ```sh
 yarn build
 ```
-### 6. Project structure 
 
+### 6. Project structure
 
 ## Troubleshooting
 
