@@ -1,13 +1,27 @@
-# Project Setup and Evaluation Guide
 
-## Prerequisites
+### Project -  Movie Rating System  
 
-Before setting up the project, ensure you have the following installed on your system:
+A web-based project that allows users to rate and browse movies efficiently. This system was designed to showcase core technical concepts such as interactive user interfaces, dynamic data updates, and smooth UI/UX for end users.
 
-- Node.js (Recommended: Latest LTS version)
-- npm or yarn (Choose one package manager)
-- Git
-- Any additional dependencies required by the project (listed below)
+### Project Overview  
+
+• Users should be able to see a grid of movies
+• Users should be able to see a grid of movies and TV shows retrieved from an external
+API (e.g., TMDB).
+• Users should be able to filter movies and TV shows by genre.
+• Users should be able to add movies or TV shows to their favorites section.
+• Users should be able to rate each movie or TV show using a star rating system.
+• Users should be able to leave comments for each movie or TV show.
+• Users should be able to search for specific movies or TV shows.
+• Users should see a "Recommended for You" section based on their preferences and
+viewing history.
+• Users should see a "Recently Viewed" section displaying their recently viewed movies
+or TV shows.
+
+Before you begin, make sure you have the following tools installed:  
+- **Node.js** (Recommended: Latest LTS version)  
+- **npm** or **yarn** (Choose one package manager)  
+- **Git**  
 
 ## Installation Steps
 
@@ -75,6 +89,7 @@ Or using yarn:
 ```sh
 yarn build
 ```
+### 6. Project structure 
 
 
 ## Troubleshooting
