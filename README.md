@@ -89,4 +89,4 @@ yarn build
 
 ## Additional Notes
 
-For any issues, feel free to reach out via tuddorionut63@yahoo.com or open an issue in the repository.
+For any issues, feel free to reach out via ioan_alexandru_tudor@yahoo.com or open an issue in the repository.
